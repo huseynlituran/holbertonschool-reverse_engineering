@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # 1. Parametrin ötürülüb-ötürülmədiyini yoxlayırıq
 if [ -z "$1" ]; then
     echo "Error: No file provided."
@@ -20,11 +19,19 @@ if ! readelf -h "$file_name" &>/dev/null; then
     exit 1
 fi
 
-# 4. readelf vasitəsilə lazımi sahələri çıxarırıq
-magic_number=$(readelf -h "$file_name" | grep "Magic:" | sed 's/^[ \t]*Magic:[ \t]*//')
-class=$(readelf -h "$file_name" | grep "Class:" | awk '{print $2}')
-byte_order=$(readelf -h "$file_name" | grep "Data:" | sed -E 's/.*, //')
-entry_point_address=$(readelf -h "$file_name" | grep "Entry point address:" | awk '{print $4}')
+# Kömékçi funksiya: sətrin əvvəlindəki və sonundakı boşluqları silir
+trim() {
+    local var="$*"
+    var="${var#"${var%%[![:space:]]*}"}"
+    var="${var%"${var##*[![:space:]]}"}"
+    echo "$var"
+}
+
+# 4. readelf vasitəsilə lazımi sahələri çıxarırıq (və trim edirik)
+magic_number=$(trim "$(readelf -h "$file_name" | grep "Magic:" | sed 's/^[ \t]*Magic:[ \t]*//')")
+class=$(trim "$(readelf -h "$file_name" | grep "Class:" | awk '{print $2}')")
+byte_order=$(trim "$(readelf -h "$file_name" | grep "Data:" | sed -E 's/.*, //')")
+entry_point_address=$(trim "$(readelf -h "$file_name" | grep "Entry point address:" | awk '{print $4}')")
 
 # 5. messages.sh faylını qoşuruq və funksiyanı çağırırıq
 if [ -f "./messages.sh" ]; then
@@ -38,3 +45,4 @@ else
     echo "Byte Order: $byte_order"
     echo "Entry Point Address: $entry_point_address"
 fi
+
