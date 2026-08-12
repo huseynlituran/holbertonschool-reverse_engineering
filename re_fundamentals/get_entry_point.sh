@@ -23,7 +23,7 @@ fi
 # 4. readelf vasitəsilə lazımi sahələri çıxarırıq
 magic_number=$(readelf -h "$file_name" | grep "Magic:" | sed 's/^[ \t]*Magic:[ \t]*//')
 class=$(readelf -h "$file_name" | grep "Class:" | awk '{print $2}')
-byte_order=$(readelf -h "$file_name" | grep "Data:" | sed 's/^[ \t]*Data:[ \t]*//')
+byte_order=$(readelf -h "$file_name" | grep "Data:" | sed -E 's/.*, //')
 entry_point_address=$(readelf -h "$file_name" | grep "Entry point address:" | awk '{print $4}')
 
 # 5. messages.sh faylını qoşuruq və funksiyanı çağırırıq
