@@ -1,48 +1,48 @@
 #!/bin/bash
-# 1. Parametrin ötürülüb-ötürülmədiyini yoxlayırıq
-if [ -z "$1" ]; then
-    echo "Error: No file provided."
+
+# Check if an argument was provided
+if [ "$#" -ne 1 ]; then
+    echo "Usage: $0 <elf_file>" >&2
     exit 1
 fi
 
 file_name="$1"
 
-# 2. Faylın mövcudluğunu yoxlayırıq
+# Check if the file exists
 if [ ! -f "$file_name" ]; then
-    echo "Error: File '$file_name' does not exist."
+    echo "Error: File '$file_name' does not exist." >&2
     exit 1
 fi
 
-# 3. Faylın ELF formatında olub-olmadığını yoxlayırıq
-if ! readelf -h "$file_name" &>/dev/null; then
-    echo "Error: '$file_name' is not a valid ELF file."
-    exit 1
-fi
-
-# Kömékçi funksiya: sətrin əvvəlindəki və sonundakı boşluqları silir
-trim() {
-    local var="$*"
-    var="${var#"${var%%[![:space:]]*}"}"
-    var="${var%"${var##*[![:space:]]}"}"
-    echo "$var"
-}
-
-# 4. readelf vasitəsilə lazımi sahələri çıxarırıq (və trim edirik)
-magic_number=$(trim "$(readelf -h "$file_name" | grep "Magic:" | sed 's/^[ \t]*Magic:[ \t]*//')")
-class=$(trim "$(readelf -h "$file_name" | grep "Class:" | awk '{print $2}')")
-byte_order=$(trim "$(readelf -h "$file_name" | grep "Data:" | sed -E 's/.*, //')")
-entry_point_address=$(trim "$(readelf -h "$file_name" | grep "Entry point address:" | awk '{print $4}')")
-
-# 5. messages.sh faylını qoşuruq və funksiyanı çağırırıq
+# Check if messages.sh exists and source it
 if [ -f "./messages.sh" ]; then
+    # shellcheck source=/dev/null
     source ./messages.sh
-    display_elf_header_info
 else
-    echo "ELF Header Information for '$file_name':"
-    echo "----------------------------------------"
-    echo "Magic Number: $magic_number"
-    echo "Class: $class"
-    echo "Byte Order: $byte_order"
-    echo "Entry Point Address: $entry_point_address"
+    echo "Error: messages.sh not found in the current directory." >&2
+    exit 1
 fi
 
+# Verify if the file is an ELF binary using readelf header check
+if ! readelf -h "$file_name" > /dev/null 2>&1; then
+    echo "Error: '$file_name' is not a valid ELF file." >&2
+    exit 1
+fi
+
+# Extract ELF header details using readelf
+header_info=$(readelf -h "$file_name")
+
+# 1. Extract Magic Number
+magic_number=$(echo "$header_info" | grep -i "Magic:" | sed -E 's/^[[:space:]]*Magic:[[:space:]]*//' | sed 's/[[:space:]]*$//')
+
+# 2. Extract Class (ELF32 or ELF64)
+class=$(echo "$header_info" | grep -i "Class:" | awk -F: '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
+
+# 3. Extract Byte Order ("little endian" or "big endian")
+byte_order=$(echo "$header_info" | grep -i "Data:" | sed -E 's/.*, ([^,]+)/\1/' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
+
+# 4. Extract Entry Point Address
+entry_point_address=$(echo "$header_info" | grep -i "Entry point address:" | awk -F: '{print $2}' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
+
+# Call the function defined in messages.sh without adding extra echoes
+display_elf_header_info

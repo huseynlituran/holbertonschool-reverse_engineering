@@ -1,0 +1,73 @@
+Dump of assembler code for function verify_flag:
+   0x0000000000001446 <+0>:	endbr64
+   0x000000000000144a <+4>:	push   rbp
+   0x000000000000144b <+5>:	mov    rbp,rsp
+   0x000000000000144e <+8>:	sub    rsp,0xc0
+   0x0000000000001455 <+15>:	mov    QWORD PTR [rbp-0xb8],rdi
+   0x000000000000145c <+22>:	mov    rax,QWORD PTR fs:0x28
+   0x0000000000001465 <+31>:	mov    QWORD PTR [rbp-0x8],rax
+   0x0000000000001469 <+35>:	xor    eax,eax
+   0x000000000000146b <+37>:	mov    rax,QWORD PTR [rbp-0xb8]
+   0x0000000000001472 <+44>:	mov    rdi,rax
+   0x0000000000001475 <+47>:	call   0x1120 <strlen@plt>
+   0x000000000000147a <+52>:	mov    DWORD PTR [rbp-0xa4],eax
+   0x0000000000001480 <+58>:	mov    QWORD PTR [rbp-0x70],0x0
+   0x0000000000001488 <+66>:	mov    QWORD PTR [rbp-0x68],0x0
+   0x0000000000001490 <+74>:	mov    QWORD PTR [rbp-0x60],0x0
+   0x0000000000001498 <+82>:	mov    QWORD PTR [rbp-0x58],0x0
+   0x00000000000014a0 <+90>:	mov    QWORD PTR [rbp-0x50],0x0
+   0x00000000000014a8 <+98>:	mov    QWORD PTR [rbp-0x48],0x0
+   0x00000000000014b0 <+106>:	mov    QWORD PTR [rbp-0x40],0x0
+   0x00000000000014b8 <+114>:	mov    QWORD PTR [rbp-0x38],0x0
+   0x00000000000014c0 <+122>:	mov    QWORD PTR [rbp-0x30],0x0
+   0x00000000000014c8 <+130>:	mov    QWORD PTR [rbp-0x28],0x0
+   0x00000000000014d0 <+138>:	mov    QWORD PTR [rbp-0x20],0x0
+   0x00000000000014d8 <+146>:	mov    QWORD PTR [rbp-0x18],0x0
+   0x00000000000014e0 <+154>:	mov    DWORD PTR [rbp-0x10],0x0
+   0x00000000000014e7 <+161>:	mov    eax,DWORD PTR [rbp-0xa4]
+   0x00000000000014ed <+167>:	movsxd rdx,eax
+   0x00000000000014f0 <+170>:	mov    rcx,QWORD PTR [rbp-0xb8]
+   0x00000000000014f7 <+177>:	lea    rax,[rbp-0x70]
+   0x00000000000014fb <+181>:	mov    rsi,rcx
+   0x00000000000014fe <+184>:	mov    rdi,rax
+   0x0000000000001501 <+187>:	call   0x1170 <memcpy@plt>
+   0x0000000000001506 <+192>:	mov    ecx,DWORD PTR [rbp-0xa4]
+   0x000000000000150c <+198>:	lea    rax,[rbp-0x70]
+   0x0000000000001510 <+202>:	mov    edx,0x3039
+   0x0000000000001515 <+207>:	mov    esi,ecx
+   0x0000000000001517 <+209>:	mov    rdi,rax
+   0x000000000000151a <+212>:	call   0x137f <custom_encrypt>
+   0x000000000000151f <+217>:	movabs rax,0x4ef0a378ebed0049
+   0x0000000000001529 <+227>:	movabs rdx,0x459656f85013994a
+   0x0000000000001533 <+237>:	mov    QWORD PTR [rbp-0xa0],rax
+   0x000000000000153a <+244>:	mov    QWORD PTR [rbp-0x98],rdx
+   0x0000000000001541 <+251>:	movabs rax,0xdabf8aa60e91585
+   0x000000000000154b <+261>:	movabs rdx,0xce48306873d32868
+   0x0000000000001555 <+271>:	mov    QWORD PTR [rbp-0x90],rax
+   0x000000000000155c <+278>:	mov    QWORD PTR [rbp-0x88],rdx
+   0x0000000000001563 <+285>:	movabs rax,0x7323a57a29d08d6d
+   0x000000000000156d <+295>:	mov    QWORD PTR [rbp-0x80],rax
+   0x0000000000001571 <+299>:	mov    DWORD PTR [rbp-0x78],0xe1ea56d8
+   0x0000000000001578 <+306>:	mov    WORD PTR [rbp-0x74],0x605f
+   0x000000000000157e <+312>:	mov    BYTE PTR [rbp-0x72],0x5a
+   0x0000000000001582 <+316>:	cmp    DWORD PTR [rbp-0xa4],0x2f
+   0x0000000000001589 <+323>:	jne    0x15b5 <verify_flag+367>
+   0x000000000000158b <+325>:	mov    eax,DWORD PTR [rbp-0xa4]
+   0x0000000000001591 <+331>:	movsxd rdx,eax
+   0x0000000000001594 <+334>:	lea    rcx,[rbp-0xa0]
+   0x000000000000159b <+341>:	lea    rax,[rbp-0x70]
+   0x000000000000159f <+345>:	mov    rsi,rcx
+   0x00000000000015a2 <+348>:	mov    rdi,rax
+   0x00000000000015a5 <+351>:	call   0x1160 <memcmp@plt>
+   0x00000000000015aa <+356>:	test   eax,eax
+   0x00000000000015ac <+358>:	jne    0x15b5 <verify_flag+367>
+   0x00000000000015ae <+360>:	mov    eax,0x1
+   0x00000000000015b3 <+365>:	jmp    0x15ba <verify_flag+372>
+   0x00000000000015b5 <+367>:	mov    eax,0x0
+   0x00000000000015ba <+372>:	mov    rsi,QWORD PTR [rbp-0x8]
+   0x00000000000015be <+376>:	xor    rsi,QWORD PTR fs:0x28
+   0x00000000000015c7 <+385>:	je     0x15ce <verify_flag+392>
+   0x00000000000015c9 <+387>:	call   0x1130 <__stack_chk_fail@plt>
+   0x00000000000015ce <+392>:	leave
+   0x00000000000015cf <+393>:	ret
+End of assembler dump.

@@ -1,0 +1,66 @@
+Dump of assembler code for function custom_encrypt:
+   0x000000000000137f <+0>:	endbr64
+   0x0000000000001383 <+4>:	push   rbp
+   0x0000000000001384 <+5>:	mov    rbp,rsp
+   0x0000000000001387 <+8>:	sub    rsp,0x20
+   0x000000000000138b <+12>:	mov    QWORD PTR [rbp-0x18],rdi
+   0x000000000000138f <+16>:	mov    DWORD PTR [rbp-0x1c],esi
+   0x0000000000001392 <+19>:	mov    DWORD PTR [rbp-0x20],edx
+   0x0000000000001395 <+22>:	mov    DWORD PTR [rbp-0x4],0x0
+   0x000000000000139c <+29>:	jmp    0x1436 <custom_encrypt+183>
+   0x00000000000013a1 <+34>:	lea    rax,[rbp-0x20]
+   0x00000000000013a5 <+38>:	mov    rdi,rax
+   0x00000000000013a8 <+41>:	call   0x134a <prng>
+   0x00000000000013ad <+46>:	mov    BYTE PTR [rbp-0x5],al
+   0x00000000000013b0 <+49>:	mov    eax,DWORD PTR [rbp-0x4]
+   0x00000000000013b3 <+52>:	movsxd rdx,eax
+   0x00000000000013b6 <+55>:	mov    rax,QWORD PTR [rbp-0x18]
+   0x00000000000013ba <+59>:	add    rax,rdx
+   0x00000000000013bd <+62>:	movzx  eax,BYTE PTR [rax]
+   0x00000000000013c0 <+65>:	mov    edx,DWORD PTR [rbp-0x4]
+   0x00000000000013c3 <+68>:	movsxd rcx,edx
+   0x00000000000013c6 <+71>:	mov    rdx,QWORD PTR [rbp-0x18]
+   0x00000000000013ca <+75>:	add    rdx,rcx
+   0x00000000000013cd <+78>:	xor    al,BYTE PTR [rbp-0x5]
+   0x00000000000013d0 <+81>:	mov    BYTE PTR [rdx],al
+   0x00000000000013d2 <+83>:	mov    eax,DWORD PTR [rbp-0x4]
+   0x00000000000013d5 <+86>:	movsxd rdx,eax
+   0x00000000000013d8 <+89>:	mov    rax,QWORD PTR [rbp-0x18]
+   0x00000000000013dc <+93>:	add    rax,rdx
+   0x00000000000013df <+96>:	movzx  eax,BYTE PTR [rax]
+   0x00000000000013e2 <+99>:	movzx  eax,al
+   0x00000000000013e5 <+102>:	shl    eax,0x3
+   0x00000000000013e8 <+105>:	mov    ecx,eax
+   0x00000000000013ea <+107>:	mov    eax,DWORD PTR [rbp-0x4]
+   0x00000000000013ed <+110>:	movsxd rdx,eax
+   0x00000000000013f0 <+113>:	mov    rax,QWORD PTR [rbp-0x18]
+   0x00000000000013f4 <+117>:	add    rax,rdx
+   0x00000000000013f7 <+120>:	movzx  eax,BYTE PTR [rax]
+   0x00000000000013fa <+123>:	shr    al,0x5
+   0x00000000000013fd <+126>:	or     ecx,eax
+   0x00000000000013ff <+128>:	mov    eax,DWORD PTR [rbp-0x4]
+   0x0000000000001402 <+131>:	movsxd rdx,eax
+   0x0000000000001405 <+134>:	mov    rax,QWORD PTR [rbp-0x18]
+   0x0000000000001409 <+138>:	add    rax,rdx
+   0x000000000000140c <+141>:	mov    edx,ecx
+   0x000000000000140e <+143>:	mov    BYTE PTR [rax],dl
+   0x0000000000001410 <+145>:	mov    eax,DWORD PTR [rbp-0x4]
+   0x0000000000001413 <+148>:	movsxd rdx,eax
+   0x0000000000001416 <+151>:	mov    rax,QWORD PTR [rbp-0x18]
+   0x000000000000141a <+155>:	add    rax,rdx
+   0x000000000000141d <+158>:	movzx  edx,BYTE PTR [rax]
+   0x0000000000001420 <+161>:	mov    eax,DWORD PTR [rbp-0x4]
+   0x0000000000001423 <+164>:	movsxd rcx,eax
+   0x0000000000001426 <+167>:	mov    rax,QWORD PTR [rbp-0x18]
+   0x000000000000142a <+171>:	add    rax,rcx
+   0x000000000000142d <+174>:	sub    edx,0x5b
+   0x0000000000001430 <+177>:	mov    BYTE PTR [rax],dl
+   0x0000000000001432 <+179>:	add    DWORD PTR [rbp-0x4],0x1
+   0x0000000000001436 <+183>:	mov    eax,DWORD PTR [rbp-0x4]
+   0x0000000000001439 <+186>:	cmp    eax,DWORD PTR [rbp-0x1c]
+   0x000000000000143c <+189>:	jl     0x13a1 <custom_encrypt+34>
+   0x0000000000001442 <+195>:	nop
+   0x0000000000001443 <+196>:	nop
+   0x0000000000001444 <+197>:	leave
+   0x0000000000001445 <+198>:	ret
+End of assembler dump.

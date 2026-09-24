@@ -1,0 +1,19 @@
+Dump of assembler code for function prng:
+   0x000000000000134a <+0>:	endbr64
+   0x000000000000134e <+4>:	push   rbp
+   0x000000000000134f <+5>:	mov    rbp,rsp
+   0x0000000000001352 <+8>:	mov    QWORD PTR [rbp-0x8],rdi
+   0x0000000000001356 <+12>:	mov    rax,QWORD PTR [rbp-0x8]
+   0x000000000000135a <+16>:	mov    eax,DWORD PTR [rax]
+   0x000000000000135c <+18>:	imul   eax,eax,0x41c64e6d
+   0x0000000000001362 <+24>:	add    eax,0x3039
+   0x0000000000001367 <+29>:	and    eax,0x7fffffff
+   0x000000000000136c <+34>:	mov    edx,eax
+   0x000000000000136e <+36>:	mov    rax,QWORD PTR [rbp-0x8]
+   0x0000000000001372 <+40>:	mov    DWORD PTR [rax],edx
+   0x0000000000001374 <+42>:	mov    rax,QWORD PTR [rbp-0x8]
+   0x0000000000001378 <+46>:	mov    eax,DWORD PTR [rax]
+   0x000000000000137a <+48>:	sar    eax,0x10
+   0x000000000000137d <+51>:	pop    rbp
+   0x000000000000137e <+52>:	ret
+End of assembler dump.

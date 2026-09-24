@@ -1,0 +1,156 @@
+Dump of assembler code for function verify_flag:
+   0x0000000000001209 <+0>:	endbr64
+   0x000000000000120d <+4>:	push   rbp
+   0x000000000000120e <+5>:	mov    rbp,rsp
+   0x0000000000001211 <+8>:	sub    rsp,0x60
+   0x0000000000001215 <+12>:	mov    QWORD PTR [rbp-0x58],rdi
+   0x0000000000001219 <+16>:	mov    rax,QWORD PTR fs:0x28
+   0x0000000000001222 <+25>:	mov    QWORD PTR [rbp-0x8],rax
+   0x0000000000001226 <+29>:	xor    eax,eax
+   0x0000000000001228 <+31>:	mov    rax,QWORD PTR [rbp-0x58]
+   0x000000000000122c <+35>:	mov    rdi,rax
+   0x000000000000122f <+38>:	call   0x10e0 <strlen@plt>
+   0x0000000000001234 <+43>:	cmp    rax,0x23
+   0x0000000000001238 <+47>:	je     0x1244 <verify_flag+59>
+   0x000000000000123a <+49>:	mov    eax,0x0
+   0x000000000000123f <+54>:	jmp    0x1406 <verify_flag+509>
+   0x0000000000001244 <+59>:	mov    rax,QWORD PTR [rbp-0x58]
+   0x0000000000001248 <+63>:	mov    edx,0xa
+   0x000000000000124d <+68>:	lea    rsi,[rip+0xdb0]        # 0x2004
+   0x0000000000001254 <+75>:	mov    rdi,rax
+   0x0000000000001257 <+78>:	call   0x10c0 <strncmp@plt>
+   0x000000000000125c <+83>:	test   eax,eax
+   0x000000000000125e <+85>:	je     0x126a <verify_flag+97>
+   0x0000000000001260 <+87>:	mov    eax,0x0
+   0x0000000000001265 <+92>:	jmp    0x1406 <verify_flag+509>
+   0x000000000000126a <+97>:	mov    rax,QWORD PTR [rbp-0x58]
+   0x000000000000126e <+101>:	add    rax,0x22
+   0x0000000000001272 <+105>:	movzx  eax,BYTE PTR [rax]
+   0x0000000000001275 <+108>:	cmp    al,0x7d
+   0x0000000000001277 <+110>:	je     0x1283 <verify_flag+122>
+   0x0000000000001279 <+112>:	mov    eax,0x0
+   0x000000000000127e <+117>:	jmp    0x1406 <verify_flag+509>
+   0x0000000000001283 <+122>:	mov    rax,QWORD PTR [rbp-0x58]
+   0x0000000000001287 <+126>:	lea    rcx,[rax+0xa]
+   0x000000000000128b <+130>:	lea    rax,[rbp-0x30]
+   0x000000000000128f <+134>:	mov    edx,0x18
+   0x0000000000001294 <+139>:	mov    rsi,rcx
+   0x0000000000001297 <+142>:	mov    rdi,rax
+   0x000000000000129a <+145>:	call   0x10b0 <strncpy@plt>
+   0x000000000000129f <+150>:	mov    BYTE PTR [rbp-0x18],0x0
+   0x00000000000012a3 <+154>:	mov    DWORD PTR [rbp-0x4c],0x0
+   0x00000000000012aa <+161>:	mov    DWORD PTR [rbp-0x48],0x1
+   0x00000000000012b1 <+168>:	mov    DWORD PTR [rbp-0x44],0x0
+   0x00000000000012b8 <+175>:	mov    DWORD PTR [rbp-0x40],0x1
+   0x00000000000012bf <+182>:	mov    DWORD PTR [rbp-0x3c],0x0
+   0x00000000000012c6 <+189>:	jmp    0x138f <verify_flag+390>
+   0x00000000000012cb <+194>:	mov    eax,DWORD PTR [rbp-0x3c]
+   0x00000000000012ce <+197>:	cdqe
+   0x00000000000012d0 <+199>:	movzx  eax,BYTE PTR [rbp+rax*1-0x30]
+   0x00000000000012d5 <+204>:	movsx  eax,al
+   0x00000000000012d8 <+207>:	mov    DWORD PTR [rbp-0x34],eax
+   0x00000000000012db <+210>:	mov    eax,DWORD PTR [rbp-0x3c]
+   0x00000000000012de <+213>:	add    eax,0x1
+   0x00000000000012e1 <+216>:	imul   eax,DWORD PTR [rbp-0x34]
+   0x00000000000012e5 <+220>:	mov    edx,DWORD PTR [rbp-0x3c]
+   0x00000000000012e8 <+223>:	add    edx,0x2
+   0x00000000000012eb <+226>:	imul   eax,edx
+   0x00000000000012ee <+229>:	cdq
+   0x00000000000012ef <+230>:	shr    edx,0x18
+   0x00000000000012f2 <+233>:	add    eax,edx
+   0x00000000000012f4 <+235>:	movzx  eax,al
+   0x00000000000012f7 <+238>:	sub    eax,edx
+   0x00000000000012f9 <+240>:	add    DWORD PTR [rbp-0x4c],eax
+   0x00000000000012fc <+243>:	mov    edx,DWORD PTR [rbp-0x3c]
+   0x00000000000012ff <+246>:	mov    eax,edx
+   0x0000000000001301 <+248>:	shl    eax,0x3
+   0x0000000000001304 <+251>:	sub    eax,edx
+   0x0000000000001306 <+253>:	mov    edx,eax
+   0x0000000000001308 <+255>:	mov    eax,DWORD PTR [rbp-0x34]
+   0x000000000000130b <+258>:	add    eax,edx
+   0x000000000000130d <+260>:	lea    edx,[rax+0x1f]
+   0x0000000000001310 <+263>:	movsxd rax,edx
+   0x0000000000001313 <+266>:	imul   rax,rax,0x214d0215
+   0x000000000000131a <+273>:	shr    rax,0x20
+   0x000000000000131e <+277>:	mov    ecx,eax
+   0x0000000000001320 <+279>:	sar    ecx,0x4
+   0x0000000000001323 <+282>:	mov    eax,edx
+   0x0000000000001325 <+284>:	sar    eax,0x1f
+   0x0000000000001328 <+287>:	sub    ecx,eax
+   0x000000000000132a <+289>:	mov    eax,ecx
+   0x000000000000132c <+291>:	imul   eax,eax,0x7b
+   0x000000000000132f <+294>:	sub    edx,eax
+   0x0000000000001331 <+296>:	mov    eax,edx
+   0x0000000000001333 <+298>:	mov    edx,DWORD PTR [rbp-0x48]
+   0x0000000000001336 <+301>:	imul   eax,edx
+   0x0000000000001339 <+304>:	mov    DWORD PTR [rbp-0x48],eax
+   0x000000000000133c <+307>:	mov    eax,DWORD PTR [rbp-0x3c]
+   0x000000000000133f <+310>:	add    eax,0x1
+   0x0000000000001342 <+313>:	imul   eax,DWORD PTR [rbp-0x34]
+   0x0000000000001346 <+317>:	mov    edx,eax
+   0x0000000000001348 <+319>:	mov    eax,DWORD PTR [rbp-0x3c]
+   0x000000000000134b <+322>:	imul   eax,eax
+   0x000000000000134e <+325>:	add    edx,eax
+   0x0000000000001350 <+327>:	mov    eax,edx
+   0x0000000000001352 <+329>:	sar    eax,0x1f
+   0x0000000000001355 <+332>:	shr    eax,0x17
+   0x0000000000001358 <+335>:	add    edx,eax
+   0x000000000000135a <+337>:	and    edx,0x1ff
+   0x0000000000001360 <+343>:	sub    edx,eax
+   0x0000000000001362 <+345>:	mov    eax,edx
+   0x0000000000001364 <+347>:	add    DWORD PTR [rbp-0x44],eax
+   0x0000000000001367 <+350>:	mov    eax,DWORD PTR [rbp-0x3c]
+   0x000000000000136a <+353>:	add    eax,0x3
+   0x000000000000136d <+356>:	imul   eax,DWORD PTR [rbp-0x34]
+   0x0000000000001371 <+360>:	lea    edx,[rax+0x11]
+   0x0000000000001374 <+363>:	mov    eax,edx
+   0x0000000000001376 <+365>:	sar    eax,0x1f
+   0x0000000000001379 <+368>:	shr    eax,0x16
+   0x000000000000137c <+371>:	add    edx,eax
+   0x000000000000137e <+373>:	and    edx,0x3ff
+   0x0000000000001384 <+379>:	sub    edx,eax
+   0x0000000000001386 <+381>:	mov    eax,edx
+   0x0000000000001388 <+383>:	xor    DWORD PTR [rbp-0x40],eax
+   0x000000000000138b <+386>:	add    DWORD PTR [rbp-0x3c],0x1
+   0x000000000000138f <+390>:	cmp    DWORD PTR [rbp-0x3c],0x17
+   0x0000000000001393 <+394>:	jle    0x12cb <verify_flag+194>
+   0x0000000000001399 <+400>:	mov    eax,DWORD PTR [rbp-0x4c]
+   0x000000000000139c <+403>:	imul   eax,DWORD PTR [rbp-0x48]
+   0x00000000000013a0 <+407>:	mov    edx,eax
+   0x00000000000013a2 <+409>:	mov    eax,DWORD PTR [rbp-0x44]
+   0x00000000000013a5 <+412>:	add    eax,edx
+   0x00000000000013a7 <+414>:	sub    eax,DWORD PTR [rbp-0x40]
+   0x00000000000013aa <+417>:	xor    eax,0xdeadbeef
+   0x00000000000013af <+422>:	and    eax,0xffffff
+   0x00000000000013b4 <+427>:	mov    DWORD PTR [rbp-0x38],eax
+   0x00000000000013b7 <+430>:	mov    eax,DWORD PTR [rbp-0x4c]
+   0x00000000000013ba <+433>:	imul   eax,DWORD PTR [rbp-0x48]
+   0x00000000000013be <+437>:	mov    edx,eax
+   0x00000000000013c0 <+439>:	mov    eax,DWORD PTR [rbp-0x38]
+   0x00000000000013c3 <+442>:	add    edx,eax
+   0x00000000000013c5 <+444>:	mov    eax,DWORD PTR [rbp-0x44]
+   0x00000000000013c8 <+447>:	imul   eax,DWORD PTR [rbp-0x40]
+   0x00000000000013cc <+451>:	sub    edx,eax
+   0x00000000000013ce <+453>:	mov    eax,edx
+   0x00000000000013d0 <+455>:	lea    edx,[rax-0x35014542]
+   0x00000000000013d6 <+461>:	mov    eax,edx
+   0x00000000000013d8 <+463>:	shr    eax,1
+   0x00000000000013da <+465>:	mov    ecx,eax
+   0x00000000000013dc <+467>:	mov    eax,0x87e53f15
+   0x00000000000013e1 <+472>:	imul   rax,rcx
+   0x00000000000013e5 <+476>:	shr    rax,0x20
+   0x00000000000013e9 <+480>:	shr    eax,0x12
+   0x00000000000013ec <+483>:	imul   eax,eax,0xf1206
+   0x00000000000013f2 <+489>:	sub    edx,eax
+   0x00000000000013f4 <+491>:	mov    eax,edx
+   0x00000000000013f6 <+493>:	mov    DWORD PTR [rbp-0x38],eax
+   0x00000000000013f9 <+496>:	cmp    DWORD PTR [rbp-0x38],0xae44
+   0x0000000000001400 <+503>:	sete   al
+   0x0000000000001403 <+506>:	movzx  eax,al
+   0x0000000000001406 <+509>:	mov    rsi,QWORD PTR [rbp-0x8]
+   0x000000000000140a <+513>:	xor    rsi,QWORD PTR fs:0x28
+   0x0000000000001413 <+522>:	je     0x141a <verify_flag+529>
+   0x0000000000001415 <+524>:	call   0x10f0 <__stack_chk_fail@plt>
+   0x000000000000141a <+529>:	leave
+   0x000000000000141b <+530>:	ret
+End of assembler dump.
